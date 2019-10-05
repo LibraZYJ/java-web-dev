@@ -1,5 +1,5 @@
 package com.web.listener;
-import com.web.entity.Book;
+import com.web.entity.Picture;
 import com.web.entity.Music;
 import com.web.entity.User;
 
@@ -40,23 +40,23 @@ public class ContextLoaderListener implements ServletContextListener {
         userList = Arrays.asList(users);
 
         //创建并生成图书数据列表
-        List<Book> bookList = new ArrayList<>(10);
-        Book[] books = {
-                new Book(1, "她ゝ那么高傲", "1.jpg", "001"),
-                new Book(2, "庸人自扰", "2.jpg", "002"),
-                new Book(3, "绿山墙的安妮", "3.jpg", "003"),
-                new Book(4, "敌人与邻居", "4.jpg", "004"),
-                new Book(5, "哀伤纪", "5.jpg", "005"),
-                new Book(6, "漫长的婚约", "6.jpg", "006"),
-                new Book(7, "庸人自扰", "7.jpg", "007"),
-                new Book(8, "绿山墙的安妮", "8.jpg", "008"),
-                new Book(9, "敌人与邻居", "9.jpg", "009"),
-                new Book(10, "哀伤纪", "10.jpg", "010"),
-                new Book(11, "漫长的婚约", "11.jpg", "011"),
-                new Book(12, "庸人自扰", "12.jpg", "012")
+        List<Picture> pictureList = new ArrayList<>(10);
+        Picture[] picture = {
+                new Picture(1, "她ゝ那么高傲", "1.jpg", "001"),
+                new Picture(2, "庸人自扰", "2.jpg", "002"),
+                new Picture(3, "绿山墙的安妮", "3.jpg", "003"),
+                new Picture(4, "敌人与邻居", "4.jpg", "004"),
+                new Picture(5, "哀伤纪", "5.jpg", "005"),
+                new Picture(6, "漫长的婚约", "6.jpg", "006"),
+                new Picture(7, "庸人自扰", "7.jpg", "007"),
+                new Picture(8, "绿山墙的安妮", "8.jpg", "008"),
+                new Picture(9, "敌人与邻居", "9.jpg", "009"),
+                new Picture(10, "哀伤纪", "10.jpg", "010"),
+                new Picture(11, "漫长的婚约", "11.jpg", "011"),
+                new Picture(12, "庸人自扰", "12.jpg", "012")
 
         };
-        bookList = Arrays.asList(books);
+        pictureList = Arrays.asList(picture);
 
         List<Music> musicList = new ArrayList<>(6);
         Music[] music = {
@@ -73,7 +73,7 @@ public class ContextLoaderListener implements ServletContextListener {
         ServletContext servletContext = sce.getServletContext();
         //设置全局变量属性，将用户和图书列表数据记入，整个应用可以共享
         servletContext.setAttribute("userList", userList);
-        servletContext.setAttribute("bookList", bookList);
+        servletContext.setAttribute("bookList", pictureList);
         servletContext.setAttribute("musicList", musicList);
     }
 

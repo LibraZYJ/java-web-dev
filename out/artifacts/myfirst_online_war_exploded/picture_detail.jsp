@@ -1,5 +1,5 @@
 <%@ page import="java.util.List" %>
-<%@ page import="com.web.entity.Book" %>
+<%@ page import="com.web.entity.Picture" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -68,8 +68,8 @@
 </head>
 <body>
 <%
-    Book book = (Book) request.getAttribute("book");
-    pageContext.setAttribute("book", book);
+    Picture picture = (Picture) request.getAttribute("picture");
+    pageContext.setAttribute("picture", picture);
 %>
 
 <div id="top">
@@ -87,14 +87,14 @@
 <div class="container">
     <div class="row">
         <div class="col-8">
-            <h3>${book.name}</h3>
+            <h3>${picture.name}</h3>
             <hr>
             <div class="row">
                 <div class="col-6">
-                    <img src="/images/${book.cover}" alt="">
+                    <img src="/images/${picture.cover}" alt="">
                 </div>
                 <div class="col-4">
-                    <p>${book.author}</p>
+                    <p>${picture.author}</p>
                 </div>
             </div>
         </div>

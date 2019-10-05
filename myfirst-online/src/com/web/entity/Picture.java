@@ -1,19 +1,19 @@
 package com.web.entity;
 
-public class Book {
+public class Picture {
     private Integer id;
     private String name;
     private String cover;
     private String author;
 
-    public Book(Integer id, String name, String cover, String author) {
+    public Picture(Integer id, String name, String cover, String author) {
         this.id = id;
         this.name = name;
         this.cover = cover;
         this.author = author;
     }
 
-    public Book() {
+    public Picture() {
     }
 
     public Integer getId() {

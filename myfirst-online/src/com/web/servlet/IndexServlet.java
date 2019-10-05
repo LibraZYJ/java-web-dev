@@ -1,6 +1,6 @@
 package com.web.servlet;
 
-import com.web.entity.Book;
+import com.web.entity.Picture;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.List;
 
 @WebServlet(urlPatterns = "/index")
@@ -18,9 +17,9 @@ public class IndexServlet extends HttpServlet {
         //获得各个Servlet共享的对象
         ServletContext sc = this.getServletContext();
         //取得全局应用对象中的变量
-        List<Book> bookList = (List<Book>) sc.getAttribute("bookList");
+        List<Picture> pictureList = (List<Picture>) sc.getAttribute("bookList");
         //存入request
-        req.setAttribute("bookList", bookList);
+        req.setAttribute("pictureList", pictureList);
         //通过服务器端转发，将数据带过去，并保持地址栏不变
         req.getRequestDispatcher("/index.jsp").forward(req, resp);
     }
