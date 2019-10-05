@@ -1,69 +1,31 @@
-<%@ page import="com.web.Book" %>
-<%@ page import="java.util.List" %><%--
-  Created by IntelliJ IDEA.
-  User: user
-  Date: 2019/9/23
-  Time: 22:11
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="java.util.List" %>
+<%@ page import="com.web.entity.Book" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>主页</title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
+    <title>首页</title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css" >
     <style type="text/css">
-        *{
-            margin: 0;
-            padding: 0;
-        }
-        body{
-            color:#333;
-        }
-        header{
-            height: 60px;
-            background-color:deepskyblue;
-            display:flex;
-            align-items:center;
-            justify-content: space-between;
-            padding-left: 10px;
-            padding-right: 10px;
-            text-decoration: none;
+        h2, h3 {
+            color: rgb(73, 73, 73);
         }
 
-        .nav{
-            flex: 0 0 50px;
-            list-style: none;
+        #search {
+            height: 80px;
+            background-color: rgb(246, 246, 241);
             display: flex;
-        }
-        .nav li{
-            margin-left: 10px;
-            margin-right: 0.625rem;
-            width: 50px;
-        }
-        .user-info{
-            padding-right:20px;
-            display: flex;
-            flex: 0 0 50px;
-            list-style: none;
-        }
-        .nav li a{
-            text-decoration:none;
-            color:#eee;
-        }
-        .user-info h3 a{
-            text-decoration:none;
-            color:#eee;
-        }
-        .nav li a:hover{
-            color:#fff;
-        }
-        .search-warp{
-            height: 60px;
-            background-color: #ddd;
-            display:flex;
             align-items: center;
-            padding-left:10%;
+            padding-left: 8%;
             margin-bottom: 10px;
+        }
+
+        .search-input {
+            flex: 0 0 40%;
+            height: 35px;
+            background-color: #fff;
+            border: none;
+            border-radius: 3px;
+            margin-left: 50px;
         }
 
         .search-btn {
@@ -74,182 +36,117 @@
             align-items: center;
             justify-content: center;
         }
+
         .search-btn img {
             width: 50%;
             height: 50%;
         }
-        .input-box{
-            width: 200px;
-            height: 40px;
-            border:1px;solid:#fff;
-            border-radius: 5px;
-            margin-left:10px ;
+
+        .card {
+            height: 150px;
+            margin: 20px 5px 20px 5px;
         }
-        .container{
+
+        .card img {
             width: 80%;
-            margin: 0 auto;
-            background-color: #ddd;
-            display: flex;
-            padding: 5px 5px 5px 5px;
+            height: 90%;
         }
-        .box{
-            flex: 0 0 20%;
-            height: 280px;
-            margin: 5px 5px 5px 5px;
-            background-color:#fff;
-            display: flex;
-            flex-direction: column;
+
+        .card p {
+            font-size: 13px;
+            color: #9b9b9b;
         }
-        .box img{
-            width: 100%;
-            height: 70%;
-        }
-        .left{
-            flex:0 0 66%;
-            height:100%;
-            background-color: #fff;
-            padding:10px 10px 10px 10px;
-        }
-        .right{
+
+        .col-4 img {
             margin: 10px 5px 20px 5px;
-            width: 80%;
-            /*flex:0 0 auto;*/
-            /*height: 100%;*/
-            /*margin-left:15px;*/
-            /*background-color:#aaa;*/
+            width: 100%;
         }
-        .row{
-            display:flex;
-            /* 自动换行 */
-            flex-wrap:wrap;
-            padding:5px 5px 5px 5px;
-        }
-        .column{
-            flex:0 0 19%;
-            height:220px;
-            background-color:#aaa;
-            border:1px;solid:#333;
-            border-radius: 10px;
-            margin:5px 5px 5px 5px;
-        }
+
         hr {
             width: 90%;
             color: #eee;
             margin-top: 10px;
         }
-        h2, h3 {
-            color: rgb(73, 73, 73);
+        #top{
+            position: -webkit-sticky;
+            position: sticky;
+            top: 0;
         }
-        footer{
-            flex:1 1 10%;
-            display: flex;
+        .row{
+
         }
+        /*.col-3 {*/
+        /*      flex: 0 0 21%;*/
+        /*}*/
     </style>
 </head>
 <body>
+<%
+    List<Book> bookList = (List<Book>) request.getAttribute("bookList");
+%>
+<%--使用jsp的include动作，将top.jsp页面包含进来，这个顶部导航可以给各个页面共享--%>
 <div id="top">
     <jsp:include page="top.jsp"/>
 </div>
-<%--顶部导航--%>
-<%--<header>--%>
-<%--    <jsp:include page="top.jsp"/>--%>
-<%--        <div>--%>
-<%--            <!-- 导航 -->--%>
-<%--            <ul class="nav">--%>
-<%--                <li>--%>
-<%--                    <a href="#">首页</a>--%>
 
-<%--                <li>--%>
-<%--                    <a href="#">浏览</a>--%>
-
-<%--                <li>--%>
-<%--                    <a href="#">话题</a>--%>
-
-<%--                <li>--%>
-<%--                    <a href="#">我的</a>--%>
-
-<%--                <li>--%>
-<%--                    <a href="#">个人</a>--%>
-
-<%--            </ul>--%>
-<%--        </div>--%>
-<%--        <div>--%>
-<%--            <div class="user-info">--%>
-<%--                <h3>zyj</h3>--%>
-<%--                <h3><a href="${pageContext.request.contextPath}/">返回登陆</a></h3>--%>
-<%--            </div>--%>
-<%--        </div>--%>
-
-<%--</header>--%>
-<!-- <搜索区> -->
-<div class="search-warp">
-    <h2>美好时刻</h2>
-    <input type="text" placeholder="输入要搜索的内容" class="input-box">
+<%--搜索区--%>
+<div id="search">
+    <h2>二珂小世界</h2>
+    <input type="text" placeholder="搜索内容" class="search-input">
     <div class="search-btn">
         <img src="images/search.png" alt="">
     </div>
-
 </div>
-    <%
-   String username = (String) session.getAttribute("username");
-   if (username !=null){
-     pageContext.setAttribute("username",username);
-  %>
-${username}
-    <%
-   }else{
-  %>
-<%--<h3><a href="${pageContext.request.contextPath}/">返回登陆</a></h3>--%>
-  <%
-    }
-  %>
-<%--  <hr>--%>
-  <%
-    List<Book> bookList = (List<Book>) request.getAttribute("bookList");
-    pageContext.setAttribute("size",bookList.size());
-  %>
-  一共${size}张照片
-<%--主题内容--%>
-<div class = "container">
-    <div class="left">
-        <h3>二珂小空间</h3>
-        <hr>
-       <div class="row">
-            <%
-                for (Book book : bookList) {
-                    pageContext.setAttribute("book",book);
-            %>
-            <div class = "box">
-                <img src="images/${book.cover}" alt = "">
-                <p>${book.name}</p>
-                <p>${book.author}</p>
+
+<%--主体内容区--%>
+<div class="container">
+    <div class="row">
+        <%--左侧2/3主体部分--%>
+        <div class="col-8">
+            <h3>周二珂</h3>
+            <hr>
+            <div class="row">
+                <%--遍历图书数据集合，将每个图书对象放入页面对象--%>
+                <%
+                    for (Book book : bookList) {
+                        pageContext.setAttribute("book", book);
+                %>
+                <%--引用col-2表示每行显示5本，再追加card细节样式--%>
+                <div class="col-3 card">
+                    <%--点击每本图书封面图，地址栏跳转为/detail/id,进入图书详情Servlet--%>
+                    <a href="${pageContext.request.contextPath}/Book_detail/${book.id}">
+                        <img src="images/${book.cover}" alt="">
+                    </a>
+                    <p style="color: rgb(51, 119, 178)">${book.name}</p>
+                    <p>${book.author}</p>
+                </div>
+                <%
+                    }
+                %>
             </div>
-            <%
-                }
-            %>
+        </div>
+
+        <div class="col-4">
+            <h3>更多信息</h3>
+            <hr>
+            <img src="images/00.jpg" alt="">
         </div>
     </div>
-    <div class="right">
-        <h3>热门标签</h3>
-        <hr>
-        <img src="images/search.png" alt="">
-    </div>
 
+    <footer>
+        <ul>
+            <li>@2015-2019</li>
+            <li>niit.edu.cn,</li>
+            <li>all rights reserved</li>
+            <li>南工院计算机学院</li>
+        </ul>
+        <ul>
+            <li>联系我们</li>
+            <li>帮助中心</li>
+            <li>法律声明</li>
+            <li>移动合作</li>
+        </ul>
+    </footer>
 </div>
-<!-- 脚注区 -->
-<footer>
-    <ul>
-        <li>@2015-2019</li>
-        <li>niit.edu.cn,</li>
-        <li>all rights reserved</li>
-        <li>南工院计算机学院</li>
-    </ul>
-    <ul>
-        <li>联系我们</li>
-        <li>帮助中心</li>
-        <li>法律声明</li>
-        <li>移动合作</li>
-    </ul>
-</footer>
-  </body>
+</body>
 </html>
